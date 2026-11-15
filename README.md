@@ -1,5 +1,5 @@
 SSCC(渋渋コンピュータ部)のDiscordサーバー用のbotです。
-コードは主にGeminiが書いています。
+コードやリリースノートはClaude,ChatGPT,Geminiが書いています。
 # 🤖 SSCCbot 機能一覧
 
 SSCCbotで利用できるコマンドと自動化機能のまとめです。
