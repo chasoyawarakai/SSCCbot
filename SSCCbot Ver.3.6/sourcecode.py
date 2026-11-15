@@ -96,7 +96,7 @@ class MyClient(discord.Client):
         self.tree = app_commands.CommandTree(self)
 
     async def setup_hook(self):
-        await self.tree.sync()
+        # 起動時はフリーズ防止のため同期を行わず、ビューの復元のみ実行
         await restore_persistent_views(self)
 
 client = MyClient()
@@ -109,7 +109,6 @@ async def on_ready():
     if not check_birthdays.is_running(): check_birthdays.start()
 
 async def restore_persistent_views(bot):
-    await bot.wait_until_ready() # 起動時のキャッシュ未ロードによる取得失敗を防止
     data = load_votes_data()
     now = datetime.now(JST)
     
@@ -122,7 +121,7 @@ async def restore_persistent_views(bot):
             is_closed=s_data.get("is_closed", False),
             restored=True
         )
-        bot.add_view(view, message_id=int(msg_id_str))
+        bot.add_view(view)  # 修正：message_id=int(msg_id_str) を削除しました
         
         if not s_data.get("is_closed") and s_data.get("deadline_dt"):
             dt = datetime.fromisoformat(s_data["deadline_dt"])
@@ -140,7 +139,7 @@ async def restore_persistent_views(bot):
             is_closed=p_data.get("is_closed", False),
             restored=True
         )
-        bot.add_view(view, message_id=int(msg_id_str))
+        bot.add_view(view)
         
         if not p_data.get("is_closed") and p_data.get("deadline_dt"):
             dt = datetime.fromisoformat(p_data["deadline_dt"])
@@ -148,7 +147,6 @@ async def restore_persistent_views(bot):
                 asyncio.create_task(PollView.auto_close_expired_poll(bot, msg_id_str, p_data))
             else:
                 asyncio.create_task(PollView.start_timer_static(bot, msg_id_str, dt, "poll"))
-
 
 # ==========================================
 # 1. フォーラム新規投稿通知
