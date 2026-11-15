@@ -12,7 +12,7 @@ from datetime import time, datetime, timedelta, timezone
 JST = timezone(timedelta(hours=9))
 
 # --- ⚙️ 設定エリア（サーバーごとにIDを紐付ける場所） ---
-TOKEN = 1234567891234567890 #botのトークンを入力
+TOKEN = "botのトークンを入力"
 
 # サーバーごとの設定を管理する辞書
 SERVER_CONFIGS = {
