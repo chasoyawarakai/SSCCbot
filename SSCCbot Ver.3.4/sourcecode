@@ -1,4 +1,4 @@
-#SSCCbot Ver.3.4
+SSCCbot Ver.3.4
 ```python
 import discord
 from discord import app_commands
@@ -13,7 +13,31 @@ from datetime import time, datetime, timedelta, timezone
 # --- ⚙️ タイムゾーン（日本時間）の定義 ---
 JST = timezone(timedelta(hours=9))
 
+# --- ⚙️ 設定エリア（サーバーごとにIDを紐付ける場所） ---
+TOKEN = "botのトークンを入力"
 
+# サーバーごとの設定を管理する辞書
+SERVER_CONFIGS = {
+    # サーバーの名前を入力(メモ用)
+    "サーバーのIDを入力": {  
+        # 💬 テキストチャンネルのID
+        "notify_channel_id": "フォーラム作成通知を送るチャンネルのIDを入力",
+        "ranking_channel_id": "出席率ランキング通知を送るチャンネルのIDを入力",
+        "intro_channel_id": "自己紹介チャンネルのIDを入力",
+        "birthday_notify_channel_id": "誕生日通知を送るチャンネルのIDを入力",
+        
+        # 🏷️ ロールのID
+        "admin_role_id": "管理者ロールのIDを入力",
+        
+        # 📁 フォーラムID と 🏷️ メンションしたいロールID のペア
+        "forum_role_map": {
+            "一つ目の分野のフォーラムのIDを入力": "一つ目の分野のロールのIDを入力",
+            "二つ目の分野のフォーラムのIDを入力": "二つ目の分野のロールのIDを入力",
+            # 同様の形式で追加可能
+        }
+    },
+    # 同様の形式で二つ目以降のサーバーも追加可能
+}
 
 # 永続化ファイル名
 ATTENDANCE_FILE = "attendance_data.json"
