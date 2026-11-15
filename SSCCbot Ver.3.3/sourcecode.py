@@ -1,5 +1,4 @@
-SSCCbot Ver.3.3
-```python
+#SSCCbot Ver.3.3
 import discord
 from discord import app_commands
 from discord.ext import tasks
@@ -1069,4 +1068,3 @@ async def commands_command(interaction: discord.Interaction):
     await interaction.response.send_message(embed=embed, ephemeral=True)
 
 client.run(TOKEN)
-```
