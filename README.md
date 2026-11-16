@@ -1,7 +1,7 @@
 SSCC(渋渋コンピュータ部)のDiscordサーバー用のbotです。
 コードやリリースノートはClaude,ChatGPT,Geminiが書いています。
 
-最新版は `SSCCbot Ver.3.9` フォルダの `bot.py` です（過去のバージョンも各フォルダに残しています）。
+最新版は `SSCCbot Ver.3.9` です（過去のバージョンも各フォルダに残しています）。
 
 # 🤖 SSCCbot 機能一覧
 
